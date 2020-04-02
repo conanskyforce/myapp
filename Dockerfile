@@ -1,6 +1,6 @@
-FROM node
+FROM node:12.16.1
 
-LABEL project = 'conan - shopify app '
+LABEL project = 'conan - shopify app'
 
 
 # 创建工作目录
@@ -15,7 +15,7 @@ RUN npm run build
 RUN mv ./dist/* ./
 
 # 对外暴露端口
-EXPOSE 9527
+EXPOSE 3600
 
 # 启动 Image 时执行命令
-CMD BUILD_ENV=docker node app.js
+CMD BUILD_ENV=docker NODE_ENV=production node server/server.js
